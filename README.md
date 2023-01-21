@@ -4,4 +4,4 @@
 
 Acceso web desde:
 
-[https://leonardo-villagran.github.io/base_datos_colaboradores](https://leonardo-villagran.github.io/base_datos_colaboradores)
+[https://leonardo-villagran.github.io/prueba_react_01](https://leonardo-villagran.github.io/prueba_react_01)
