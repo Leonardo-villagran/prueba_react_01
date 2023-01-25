@@ -8,85 +8,80 @@ moment.locale('es');
 const MiApi = () => {
 
     //Contador de la tabla para evitar errores de key
-    let i=1;
+    const titulo = "Selecciona un feriado y visita Chile";
+    const texto1 ="Listado de feriados de Chile";
+    const texto2 ="Selecciona fechas para obtener descuentos";
     const [listaTareas, setListaTareas] = useState([]);
-    const titulo = "Buscador títulos de feriados";
     const [buscarTarea, setBuscarTarea] = useState("");
+    
+    useEffect(() => {
+        consultarFeriados();
+        }, []);
 
-    useEffect(() => {fetch('https://api.victorsanmartin.com/feriados/en.json')
-            .then((response) => response.json())
-            .then((data) => {
-                setListaTareas(data['data']);
-               // console.log(data['data']);
-            })
-            .catch((err) => {
-                console.log(err.message);
-            });
-    }, []);
-
+    const consultarFeriados = async () => {
+        const url = 'https://api.victorsanmartin.com/feriados/en.json';
+        const response = await fetch(url)
+        const data = await response.json()
+        setListaTareas(data['data']);
+    }
+            
     //Función al escribir sobre el input del formulario
     
     const capturaBuscar = (e) => {
         setBuscarTarea(e.target.value)
     }
+    
     const filtrados = listaTareas.filter((tarea) => {
         if (tarea.length !== 0) {
             if (tarea.title.toUpperCase().includes(buscarTarea.toUpperCase())) {
-
                 return true;
-
             }
         }
             return false;
     });
 
-    
-
     //Función que ordena listas for fecha
-    let ordenFecha =(lista, text)  =>{
-
+    let ordenFecha =(lista)  =>{
         if (lista.length !== 0) {
             lista = lista.sort((a, b) => moment(a.date, "YYYY-MM-DD").unix() - moment(b.date, "YYYY-MM-DD").unix());
-            console.log(text, " With moment js: \n", lista);
         }
     }
-    ordenFecha(listaTareas,"Lista de tareas.");
-    ordenFecha(filtrados,"Lista de filtrados");
+
+    const procesarListado= (lista) => {
+        ordenFecha(lista);
+        let listado=lista.map((tarea, index) =>
+            <tr key={index}>
+                <td>{moment(tarea.date).format("DD/MM/YYYY")}  {console.log(index)}</td>
+                <td> {tarea.title} </td>
+                <td> {tarea.extra} </td>
+                <td> {tarea.inalienable===true? "Obligatorio": "Libre elección"} </td>
+                
+            </tr>
+        )   
+        return listado;
+    }
+
 
     return (
-        <div className="w-100">
-            <div className="w-100 bg-dark d-flex justify-content-between p-2">
+        <div className="fondo">
+            <div className="bg-dark d-flex justify-content-between p-2 m-1">
                 <p className="textoHeader text-light">{titulo}</p>
-                <form >
-                    <input className="buscador" id="buscador" name="buscador" value={buscarTarea} onChange={capturaBuscar} placeholder="Buscar títulos de feriados" />
+                <form>
+                    <input className="busqueda" id="busqueda" name="busqueda" value={buscarTarea} onChange={capturaBuscar} placeholder="Buscar títulos de feriados" />
                 </form>
-
             </div>
-            <h1>Listado de feriados</h1>
-            <table className="table table-striped table-bordered table-hover" id="sortTable">
-                <tbody key={i}>
-                    <tr className="bg-dark" key={i = i + 1}><th className="text-light" scope="col">Fecha</th ><th className="text-light" scope="col">Título del feriado</th>
+            <div className='caja m-1'>
+                <img className="estirar" src={process.env.PUBLIC_URL + '/img/fondo.jpg'} alt="Imagen de fondo" />  
+                <h1 className='texto1'>{texto1}</h1>
+                <p className='texto2'>{texto2}</p>
+            </div>
+            
+            <table className="table table-striped table-bordered table-hover">
+                <tbody >
+                    <tr className="bg-dark"><th className="text-light" scope="col">Fecha</th ><th className="text-light" scope="col">Título del feriado</th>
                     <th className="text-light" scope="col">Tipo</th>
                     <th className="text-light" scope="col">Estado</th></tr>
-                    {(buscarTarea === "") ? listaTareas.map((tarea, index) =>
-                        <tr key={i = i + 1}>
-                            <td>{moment(tarea.date).format("DD/MM/YYYY")} </td>
-                            <td> {tarea.title} </td>
-                            <td> {tarea.extra} </td>
-                            <td> {tarea.inalienable===true? "Obligatorio": "Libre elección"} </td>
-                            
-                        </tr>
-                    )
-                        :
-                        filtrados.map((tarea, index) =>
-                            <tr key={i = i + 1}>
-                                <td>{moment(tarea.date).format("DD/MM/YYYY")} </td>
-                            <td> {tarea.title} </td>
-                            <td> {tarea.extra} </td>
-                            <td> {tarea.inalienable===true? "Obligatorio": "Libre elección"} </td>
-                            </tr>
-                        )
-                    }
+                    {(buscarTarea === "") ? procesarListado(listaTareas) : procesarListado(filtrados)}
                 </tbody>
             </table>
             

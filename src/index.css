@@ -7,27 +7,53 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-.labelColaborador{
-  font-weight: bold;
-}
 .textoHeader{
   font-weight: bold;
   font-size: 22px;
 }
-.buscador{
+.busqueda{
   width: 300px;
   height: 30px;
 }
 table th, td {
   text-align: center;
+  font-size: 14px;
 }
-#nombre, #email, #buscador{
+#nombre, #email, #busqueda{
   font-size: 13px;
 }
 .muteado{
   font-size: 13px;
+}
+
+.texto1{
+  position:absolute;
+  top: 10px;
+  left: 5px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 3.5vw;
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.2em
+}
+
+.texto2{
+  position:absolute;
+  bottom: 0px;
+  left: 7px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.4vw;
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.2em
+}
+
+.caja{
+  position:relative;
+  display: inline-block;
+}
+.fondo{
+  position:relative;
+  display: inline-block;
+}
+.estirar {
+  width:100%;
 }
