@@ -51,7 +51,7 @@ const MiApi = () => {
         ordenFecha(lista);
         let listado=lista.map((tarea, index) =>
             <tr key={index}>
-                <td>{moment(tarea.date).format("DD/MM/YYYY")}  {console.log(index)}</td>
+                <td>{moment(tarea.date).format("DD/MM/YYYY")}</td>
                 <td> {tarea.title} </td>
                 <td> {tarea.extra} </td>
                 <td> {tarea.inalienable===true? "Obligatorio": "Libre elección"} </td>
