@@ -7,18 +7,22 @@ import MiApi from './components/MiApi'
 function App() {
   const nombreFooter = "@Leonardo-Villagrán";
   const emailFooter = "mailto:leonardovillagran@yahoo.com";
-  
+
   return (
-    <Card>
-      <Card.Body>
-          <MiApi />
-      </Card.Body>
-      <Card.Footer>
-        <div className='p-2 text-center'>
-          <a href={emailFooter}><Badge bg="secondary p-2">{nombreFooter}</Badge></a>
-        </div>
-      </Card.Footer>
-    </Card>
+    <div className="container">
+      <div className="row">
+        <Card>
+          <Card.Body>
+            <MiApi />
+          </Card.Body>
+          <Card.Footer>
+            <div className='p-2 text-center'>
+              <a href={emailFooter}><Badge bg="secondary p-2">{nombreFooter}</Badge></a>
+            </div>
+          </Card.Footer>
+        </Card>
+      </div>
+    </div>
   );
 }
 export default App;
