@@ -8,4 +8,4 @@ Acceso web desde:
 
 Acceso a video explicativo en Youtube: 
 
-[![Alt text](https://img.youtube.com/vi/0cXuVS6qyFc/0.jpg)](https://youtu.be/0cXuVS6qyFc)
+[![Alt text](https://img.youtube.com/vi/5uTPKJ3HEEk/0.jpg)](https://youtu.be/5uTPKJ3HEEk)
