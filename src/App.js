@@ -2,16 +2,18 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
-import MiApi from './components/MiApi'
+import MiApi from './components/MiApi';
+import { Container } from '@mui/material';
+import Row from 'react-bootstrap/Row';
 
 function App() {
   const nombreFooter = "@Leonardo-Villagrán";
   const emailFooter = "mailto:leonardovillagran@yahoo.com";
 
   return (
-    <div className="container">
-      <div className="row">
-        <Card>
+    <Container className='container-fluid bg-light-gradient '>
+      <Row>
+        <Card id='container-back' className="border border-secondary">
           <Card.Body>
             <MiApi />
           </Card.Body>
@@ -21,8 +23,8 @@ function App() {
             </div>
           </Card.Footer>
         </Card>
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 }
 export default App;

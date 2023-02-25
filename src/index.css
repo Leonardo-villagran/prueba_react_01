@@ -5,8 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
-
+table {
+  width: 500px;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+  border-radius: 10px;
+}
 .textoHeader{
   font-weight: bold;
   font-size: 22px;
@@ -18,6 +25,7 @@ body {
 table th, td {
   text-align: center;
   font-size: 14px;
+  font-weight: bold;
 }
 #nombre, #email, #busqueda{
   font-size: 13px;
@@ -50,10 +58,22 @@ table th, td {
   position:relative;
   display: inline-block;
 }
+.estirar {
+  width:100%;
+}
 .fondo{
   position:relative;
   display: inline-block;
+  /*background:url('assets/images/chile03.png') no-repeat center center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size: cover;
+    background-size: cover;*/
 }
-.estirar {
-  width:100%;
+#container-back{
+  background:url('assets/images/chile04.png') no-repeat center center fixed;
+  -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
